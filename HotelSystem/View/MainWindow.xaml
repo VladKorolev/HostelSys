@@ -28,11 +28,11 @@
         <TabItem Header="Бронирование клиентов">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="317*"/>
-                    <ColumnDefinition Width="259*"/>
+                    <ColumnDefinition Width="680*"/>
+                    <ColumnDefinition Width="471*"/>
                 </Grid.ColumnDefinitions>
 
-                <DataGrid Grid.Column="0" x:Name="ClientsGrid" ItemsSource="{Binding Context.Clients.Local}" SelectedItem="{Binding SelectedClient, Mode=TwoWay}" Margin="0,0,517.2,0.4" Grid.ColumnSpan="2">
+                <DataGrid Grid.Column="0" x:Name="ClientsGrid" ItemsSource="{Binding Context.Clients.Local}" SelectedItem="{Binding SelectedClient, Mode=TwoWay}" Margin="0,0,0,0.4">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Имя клиента" Binding="{Binding FirstName}"/>
                         <DataGridTextColumn Header="Фамилия клиента" Binding="{Binding LastName}"/>
@@ -53,7 +53,7 @@
                 </DataGrid>
 
                 <!-- < Book CRUD > -->
-                <Border Grid.Column="1" BorderThickness="1" Margin="87.4,50,50.2,50.4" CornerRadius="10" BorderBrush="LightBlue">
+                <Border Grid.Column="1" BorderThickness="1" Margin="90,50,50.2,50.4" CornerRadius="10" BorderBrush="LightBlue">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -83,9 +83,9 @@
 
                         <TextBox Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding ClientInfo.FirstName, Mode=TwoWay}"/>
                         <TextBox Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding ClientInfo.LastName, Mode=TwoWay}"/>
-                        <TextBox Grid.Row="2" Grid.Column="1" Margin="3" Text="{Binding ClientInfo.Birthdate, Mode=TwoWay}"/>
-                        <TextBox Grid.Row="3" Grid.Column="1" Margin="3" Text="{Binding ClientInfo.Passport, Mode=TwoWay}"/>
-                        <TextBox Grid.Row="4" Grid.Column="1" Margin="3" Text="{Binding ClientInfo.Account, Mode=TwoWay}"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Margin="3" Text="{Binding ClientInfo.Birthdate, Mode=TwoWay}" PreviewTextInput="NumberValidation" MaxLength="3"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Margin="3" Text="{Binding ClientInfo.Passport, Mode=TwoWay}" PreviewTextInput="NumberValidation" MaxLength="11"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Margin="3" Text="{Binding ClientInfo.Account, Mode=TwoWay}" PreviewTextInput="NumberValidation"/>
                         <DatePicker Grid.Row="5" Grid.Column="1" Margin="3" SelectedDate="{Binding ClientInfo.DataStart, Mode=TwoWay}"/>
                         <DatePicker Grid.Row="6" Grid.Column="1" Margin="3" SelectedDate="{Binding ClientInfo.DataStop, Mode=TwoWay}"/>
                         <ComboBox Grid.Row="7" Grid.Column="1" Margin="3" ItemsSource="{Binding Context.Rooms.Local}" SelectedItem="{Binding ClientInfo.Room, Mode=TwoWay}">
@@ -153,7 +153,7 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </DatePicker>
-                                <TextBox x:Name="AccTbFilter" Grid.Row="2" Grid.Column="1" Margin="2.8,3,3.4,3.2" Text="{Binding ClientFilter.Passport, UpdateSourceTrigger=PropertyChanged}">
+                                <TextBox x:Name="AccTbFilter" PreviewTextInput="NumberValidation" Grid.Row="2" Grid.Column="1" Margin="2.8,3,3.4,3.2" Text="{Binding ClientFilter.Passport, UpdateSourceTrigger=PropertyChanged}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="TextChanged">
                                             <i:InvokeCommandAction Command="{Binding ClientsFilterChangedCommand}"/>
@@ -253,7 +253,7 @@
                         <TextBlock Grid.Row="0" Grid.Column="0" Margin="5"><Run Text="Гостиничный номер"/><Run Text=":"/></TextBlock>
                         <TextBlock Grid.Row="1" Grid.Column="0" Margin="5"><Run Text="Тип номера"/><Run Text=":"/></TextBlock>
 
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding RoomInfo.Number, Mode=TwoWay}"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding RoomInfo.Number, Mode=TwoWay}" PreviewTextInput="NumberValidation"/>
                         <ComboBox x:Name="RoomTypeCb" Grid.Row="1" Grid.Column="1" Margin="3" SelectedIndex="{Binding RoomInfo.Type, Mode=TwoWay, Converter={StaticResource RoomTypeConverter}}"/>
 
                         <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
@@ -289,7 +289,7 @@
                                 <TextBlock Grid.Row="1" Grid.Column="0" Margin="5"><Run Text="Тип номера"/><Run Text=":"/></TextBlock>
                                 <TextBlock Grid.Row="2" Grid.Column="0" Margin="5"><Run Text="Статус номера"/><Run Text=":"/></TextBlock>
 
-                                <TextBox x:Name="RnTbFilter" Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding RoomFilter.Number, UpdateSourceTrigger=PropertyChanged}">
+                                <TextBox x:Name="RnTbFilter" PreviewTextInput="NumberValidation" Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding RoomFilter.Number, UpdateSourceTrigger=PropertyChanged}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="TextChanged">
                                             <i:InvokeCommandAction Command="{Binding RoomsFilterChangedCommand}" CommandParameter="{Binding ElementName=RfCbFilter, Path=SelectedIndex}"/>

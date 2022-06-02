@@ -13,7 +13,7 @@ namespace HotelSystem.HotelDbContext
             Property(person => person.Birthdate).IsOptional().HasMaxLength(5);
             Property(person => person.Passport).IsOptional().HasMaxLength(15);
 
-            ToTable("People");
+            ToTable("Customer");
         }
     }
 }

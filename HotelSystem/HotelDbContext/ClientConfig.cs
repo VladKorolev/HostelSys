@@ -12,7 +12,7 @@ namespace HotelSystem.HotelDbContext
             Property(client => client.DataStop).HasColumnType("datetime2").IsOptional();
             HasRequired(client => client.Room);
             
-            ToTable("Clients");
+            ToTable("Booking");
         }
     }
 }

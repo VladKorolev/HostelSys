@@ -306,6 +306,9 @@ namespace HotelSystem.ViewModel
                         ClientInfo.LastName = client.LastName;
                         ClientInfo.Birthdate = client.Birthdate;
                         ClientInfo.Passport = client.Passport;
+                        ClientInfo.Account = client.Account;
+                        ClientInfo.DataStart = client.DataStart;
+                        ClientInfo.DataStop = client.DataStop;
                         ClientInfo.Room = client.Room;
                     },
                     client => client != null));
